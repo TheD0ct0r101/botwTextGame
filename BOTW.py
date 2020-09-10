@@ -27,86 +27,108 @@ class Game:
     This is a proof of concept game, which may or may not be finished as time goes on.
     """)
 
-    # Game Start Prompt
+    # '>>>' represents a choice to make and/or a prompt to perform an action
+    # '!>' represents an action you performed
+    # '?>' represents a comment from the game narrator
+
+    # Game Start Prompt ------------------------------------------------------------------------------------------------
 
     answer = input(">>> Start New Game? (y/n)").lower().strip()
     if answer == "n":
-        print("#############")
+        print("################")
         print("See you later...")
     elif answer == "y":
 
-        # Loop 1 START
+        # Loop 1 PREP ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         asleep = True
         laziness = 0
-        print("######################################################################################################")
+
+        # Loop 1 START =================================================================================================
+
         while asleep:
             if laziness == 0:
-                print("You hear a voice call out to you... It is barely audible, but you can hear it saying"
-                      " 'open your eyes'.")
+                print("################################################################################################"
+                      "######")
+                print("You hear a voice call out to you... It is barely audible, but you can hear it saying 'open "
+                      "your eyes'.")
             elif laziness >= 1:
-                print("########################################################")
                 print("The voice once again calls out to you to open your eyes.")
 
-            # Prompt 1 START
+            # Prompt 1-A START -----------------------------------------------------------------------------------------
 
             answer = input(">>> Open your eyes? (y/n)").lower().strip()
             if answer == "y":
                 if laziness < 3:
-                    print("##################")
-                    print("You open your eyes...")
+                    print("/**********************\\")
+                    print("!> You open your eyes...")
+                    print("\\**********************/")
                 elif laziness >= 3:
-                    print("################################################")
-                    print("You open your eyes...only took you 10,000 years.")
+                    print("/***************************************************\\")
+                    print("!> You open your eyes...only took you 10,000 years...")
+                    print("\\***************************************************/")
                 asleep = False
             elif answer == "n":
                 laziness += 1  # Increase laziness
-                if laziness > 3:
-                    print("####################")
-                    print("You refuse the call...")
+                if laziness < 3:
+                    print("/***********************\\")
+                    print("!> You refuse the call...")
+                    print("\\***********************/")
                 if laziness >= 3:
-                    print("######################")
-                    print("You refuse the call...")
-                    print("You seem to be considering just dying here.")
+                    print("/********************************************\\")
+                    print("!> You refuse the call...")
+                    print("?> You seem to be considering just dying here.")
+                    print("\\********************************************/")
+            else:
+                print("audible screeching")
 
-            # Prompt 1 END
-        # Loop 1 END
+            # Prompt 1-A END -------------------------------------------------------------------------------------------
+        # Loop 1 END ===================================================================================================
 
-        print("###################################")
+        print("######################################################################################################")
         print("You awake to a blinding blue light.")
         print("As you gain focus, you find it is not one light, but an elaborate organic pattern of lights above you.")
         print("You find yourself in a stone waterbed, filled with strange neon blue fluid.")
         print("You hear a quiet rushing sound as the fluid slowly drains away")
+        print("######################################################################################################")
 
-        # Loop 2 START
+        # Loop 2 PREP ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         layingDown = True
         laziness = 0
+
+        # Loop 2 START =================================================================================================
+
         while layingDown:
 
-            # Sit-Up Prompt
+            # Prompt 2-A START -----------------------------------------------------------------------------------------
 
             answer = input(">>> Sit up? (y/n)").lower().strip()
             if answer == "y":
                 if laziness < 3:
-                    print("#############")
-                    print("You sit up...")
+                    print("/**************\\")
+                    print("!> You sit up...")
+                    print("\\**************/")
                 elif laziness >= 3:
-                    print("##################################")
-                    print("You sit up...Took you long enough.")
+                    print("/*************************************\\")
+                    print("!> You sit up...")
+                    print("?> Took you long enough...")
+                    print("\\*************************************/")
                 layingDown = False
             elif answer == "n":
                 laziness += 1
                 if laziness < 3:
-                    print("#########################################################################")
-                    print("You decide moving takes a bit too much from your effort budget right now.")
+                    print("/***************************************************************************\\")
+                    print("!> You decide moving takes a bit too much from your effort budget right now...")
+                    print("\\****************************************************************************/")
                 elif laziness >= 3:
-                    print("#############################################")
-                    print("You seem to desire laying there for eternity.")
+                    print("/**********************************************\\")
+                    print("?> You seem to desire laying there for eternity.")
+                    print("\\**********************************************/")
 
-        # Loop 2 END
+            # Prompt 2-A END -------------------------------------------------------------------------------------------
+        # Loop 2 END ===================================================================================================
 
     # If the player types anything other than y or n at the 'New Game' prompt:
     else:
         print("I am error")
-    # ##################################################################################################################

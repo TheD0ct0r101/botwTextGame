@@ -1,4 +1,4 @@
-# botwTextGame
+# botwTextGame a0.0.3
 A proof of concept conversion of the entirety of Breath of the Wild into a text based game.
 
 The goal: Make as much of Breath of the Wild as possible in a text based form. The story, the mechanics, the exploration aspect, everything.

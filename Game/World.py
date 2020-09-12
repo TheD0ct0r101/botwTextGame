@@ -1,5 +1,4 @@
 
-import cmd
 import textwrap
 
 DESC = 'desc'
@@ -14,6 +13,7 @@ SHOP = 'shop'
 GROUNDDESC = 'grounddesc'
 SHORTDESC = 'shortdesc'
 LONGDESC = 'longdesc'
+ROOMDESC = 'roomdesc'
 TAKEABLE = 'takeable'
 EDIBLE = 'edible'
 DESCWORDS = 'descwords'
@@ -25,8 +25,8 @@ SCREEN_WIDTH = 80
 
 # Converting xy coordinate values to location names via switch case \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-def overWorldLocation(coordinate):
-    overWorldLocationName = {
+def worldLocation(coordinate):
+    worldLocationName = {
         -5.1: 'River of the Dead',
         -4.1: 'River of the Dead',
         -4.0: 'Keh Namut Shrine',
@@ -49,27 +49,33 @@ def overWorldLocation(coordinate):
         4.2: 'Great Plateau Tower',
         6.0: 'Ja Baij Shrine',
     }
-    return overWorldLocationName.get(coordinate, "Location does not exist")
+    return worldLocationName.get(coordinate, "Location does not exist")
 
-def overWorldLocationRoom(roomIdValue):
-    overWorldLocationRoomName = {}
-    return overWorldLocationRoomName.get(roomIdValue, "Room does not exist")
+def worldLocationRoom(roomIdValue):
+    worldLocationRoomName = {
+        0: 'Bed Chamber',
+        1: 'Lobby',
+    }
+    return worldLocationRoomName.get(roomIdValue, "Room does not exist")
 
 # //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # List of World locations and their properties \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 worldLocations = {
-    overWorldLocation(0.0): {
-        overWorldLocationRoom(0): {
-            DESC: "This chamber holds the stone tub from which you awoke. It was once filled with a mysterious blue "
-                  "liquid",
-            GROUND: ['Sheikah Slate'],
+    worldLocation(0.0): {
+        worldLocationRoom(0): {
+            ROOMDESC: "This chamber holds the stone tub from which you awoke. It was once filled with a mysterious "
+                      "blue liquid.",
+            GROUND: ['Sheikah Slate']
         },
-        DESC: "Your place of awakening.",
+        worldLocationRoom(1): {
+            ROOMDESC: "This room is quite large. It's walls are that of a smooth patterned black stone, with ornate "
+                      "pillars in the corner."
+        },
+        DESC: "Your place of awakening."
     }
 }
-
 
 # //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,13 +83,23 @@ worldLocations = {
 
 # displayLocation(overWorldLocation(coordinate)
 
-def displayLocation(coordinate):
+def displayLocation(worldlocation, worldlocationroom):
 
     # Print location name with fancy divider
-    print(coordinate)
-    print('=' * len(coordinate))
+    print("Location: " + worldlocation)
+    print('=' * len("Location: " + worldlocation))
+    print("Room: " + worldlocationroom)
+    print('=' * len("Room: " + worldlocationroom))
 
     # Print location description with textwrap.wrap()
-    print('\n'.join(textwrap.wrap(worldLocations[coordinate][DESC], SCREEN_WIDTH)))
+    print('\n'.join(textwrap.wrap(worldLocations[worldlocation][DESC], SCREEN_WIDTH)))
+    print('*' * len(worldLocations[worldlocation][DESC]))
+
+    # Print room description with textwrap.wrap()
+    print('\n'.join(textwrap.wrap(worldLocations[worldlocation][worldlocationroom][ROOMDESC], SCREEN_WIDTH)))
+
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# Test:
+displayLocation(worldLocation(0.0), worldLocationRoom(0))

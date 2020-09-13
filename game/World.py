@@ -71,7 +71,7 @@ worldLocations = {
         },
         worldLocationRoom(1): {
             ROOMDESC: "This room is quite large. It's walls are that of a smooth patterned black stone, with ornate "
-                      "pillars in the corner."
+                      "pillars in the corners."
         },
         DESC: "Your place of awakening."
     }

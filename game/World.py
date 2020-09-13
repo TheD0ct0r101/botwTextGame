@@ -102,4 +102,4 @@ def displayLocation(worldlocation, worldlocationroom):
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 # Test:
-displayLocation(worldLocation(0.0), worldLocationRoom(0))
+# displayLocation(worldLocation(0.0), worldLocationRoom(0))

@@ -1,7 +1,14 @@
 
 from time import sleep
 import sys
-from Game.World import *
+import os
+from playsound import playsound
+from game.World import *
+
+# Non-dependant sound directory setup ##################################################################################
+
+root_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+prompt_continue = os.path.join(root_dir, "assets", "prompt_continue.wav")
 
 # Fancy text scrolling #################################################################################################
 
@@ -63,10 +70,12 @@ and/or additional narration for performing certain tasks a certain way/a certain
 
 answer = input(">>> Start New Game? (y/n)").lower().strip()
 if answer == "n" or answer == "no":
+    playsound(prompt_continue)
     sprint("################")
     slowPrint("See you later...")
     answer = input("Press Enter to Exit")
 elif answer == "y" or answer == "yes":
+    playsound(prompt_continue)
 
     # Loop 1 PREP ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -88,6 +97,7 @@ elif answer == "y" or answer == "yes":
 
         answer = input(">>> Open your eyes? (y/n)").lower().strip()
         if answer == "y" or answer == "yes":
+            playsound(prompt_continue)
             if laziness < 3:
                 print("/**********************\\")
                 slowPrint("!> You open your eyes...")
@@ -100,6 +110,7 @@ elif answer == "y" or answer == "yes":
                 sleep(0.3)
             asleep = False
         elif answer == "n" or answer == "no":
+            playsound(prompt_continue)
             laziness += 1  # Increase laziness
             if laziness < 3:
                 print("/***********************\\")
@@ -113,6 +124,7 @@ elif answer == "y" or answer == "yes":
                 print("\\********************************************/")
                 sleep(0.3)
         else:
+            playsound(prompt_continue)
             print("audible screeching")
 
         # Prompt 1-A END -----------------------------------------------------------------------------------------------
@@ -138,6 +150,7 @@ You hear a quiet rushing sound as the fluid slowly drains away.""")
 
         answer = input(">>> Sit up? (y/n)").lower().strip()
         if answer == "y" or answer == "yes":
+            playsound(prompt_continue)
             if laziness < 3:
                 print("/**************\\")
                 slowPrint("!> You sit up...")
@@ -149,6 +162,7 @@ You hear a quiet rushing sound as the fluid slowly drains away.""")
                 print("\\*************************************/")
             layingDown = False
         elif answer == "n" or answer == "no":
+            playsound(prompt_continue)
             laziness += 1
             if laziness < 3:
                 print("/***************************************************************************\\")
@@ -158,10 +172,14 @@ You hear a quiet rushing sound as the fluid slowly drains away.""")
                 print("/**********************************************\\")
                 slowPrint("?> You seem to desire laying there for eternity.")
                 print("\\**********************************************/")
+        else:
+            playsound(prompt_continue)
+            print("You have one job.")
 
         # Prompt 2-A END -----------------------------------------------------------------------------------------------
     # Loop 2 END =======================================================================================================
     answer = input("Press Enter to Exit")
 # If the player types anything other than y or n at the 'New Game' prompt:
 else:
+    playsound(prompt_continue)
     print("I am error")

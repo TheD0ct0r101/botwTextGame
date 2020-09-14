@@ -50,7 +50,7 @@ print(""".---.                   .-. .-.            .--.   .-. .-.           .-.
 : .; :: ..'' '_.'' .; ; : : : .. :  ' .; :: :     : : : .. :' '_.'  : `' `' ;: :: :_ ' .; :
 :___.':_;  `.__.'`.__,_;:_; :_;:_;  `.__.':_;     :_; :_;:_;`.__.'   `.,`.,' :_;`.__;`.__.'
 VERSION: Alpha 1.0.0""")
-
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 sprint("""Welcome to Breath of the Wild: Text-Based Edition.
 
 This is a proof of concept game, which may or may not be finished as time goes on.
